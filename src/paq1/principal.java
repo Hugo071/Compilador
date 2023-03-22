@@ -10,11 +10,12 @@ package paq1;
  */
 public class principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form principal
-     */
+    NumeroLinea numerolinea;
+ 
     public principal() {
         initComponents();
+        numerolinea = new NumeroLinea(jTextArea1);
+        jScrollPane1.setRowHeaderView(numerolinea);
     }
 
     /**
