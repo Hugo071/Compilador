@@ -31,6 +31,21 @@ id = {letra}({letra}|{digito})*
 
 {comentario}|{espacioEnBlanco} { /* Ignorar */ }
 
+/* Reservadas */
+int {lexeme=yytext(); return entero;}
+float {lexeme=yytext(); return flotante;}
+char {lexeme=yytext(); return caracter;}
+String {lexeme=yytext(); return cadena;}
+boolean {lexeme=yytext(); return booleano;}
+for {lexeme=yytext(); return por;}
+if {lexeme=yytext(); return si;}
+else {lexeme=yytext(); return entonces;}
+break {lexeme=yytext(); return romper;}
+true {lexeme=yytext(); return verdadero;}
+false {lexeme=yytext(); return falso;}
+mostrar {lexeme=yytext(); return mostrar;}
+entrada {lexeme=yytext(); return entrada;}
+
 /* Identificadores */
 {id} {lexeme=yytext(); return id;}
 
@@ -88,18 +103,4 @@ id = {letra}({letra}|{digito})*
 "," {return Puntuacion_Coma;}
 ";" {return Puntuacion_PuntoComa;}
 
-/* Reservadas */
-int {lexeme=yytext(); return entero;}
-float {lexeme=yytext(); return flotante;}
-char {lexeme=yytext(); return caracter;}
-String {lexeme=yytext(); return cadena;}
-boolean {lexeme=yytext(); return booleano;}
-for {lexeme=yytext(); return por;}
-if {lexeme=yytext(); return si;}
-else {lexeme=yytext(); return entonces;}
-break {lexeme=yytext(); return romper;}
-true {lexeme=yytext(); return verdadero;}
-false {lexeme=yytext(); return falso;}
-mostrar {lexeme=yytext(); return mostrar;}
-entrada {lexeme=yytext(); return entrada;}
  . {return ERROR;}
