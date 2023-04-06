@@ -14,34 +14,32 @@ public class principal extends javax.swing.JFrame {
 
     NumeroLinea2 numerolinea2;
     HerramientaArchivo archivo;
- 
+
     public principal() {
         initComponents();
         inicializar();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }
-    
-    private void inicializar(){
+
+    private void inicializar() {
         archivo = new HerramientaArchivo();
         setTitle("[#FrijolesNet]");
-        String[] op = new String[] {"Guardar y continuar", "Descartar"};
+        String[] op = new String[]{"Guardar y continuar", "Descartar"};
         numerolinea2 = new NumeroLinea2(codigoFuente);
         jScrollPane2.setRowHeaderView(numerolinea2);
     }
-    
-    private void Cerrar(){
+
+    private void Cerrar() {
         String opciones[] = {"Cerrar", "Cancelar"};
         int eleccion = JOptionPane.showOptionDialog(this, "Estas seguro de que quieres cerrar el programa? Todo cambio sin guardar se perdera", "Cierre de programa", 0, 0, null, opciones, EXIT_ON_CLOSE);
-        if(eleccion==JOptionPane.YES_OPTION){
+        if (eleccion == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }
-    
-    public void LimpiarComponentes(){
+
+    public void LimpiarComponentes() {
         lexico.setText("");
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,12 +51,11 @@ public class principal extends javax.swing.JFrame {
         lexico = new javax.swing.JTextArea();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        btnAnalizar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -96,53 +93,62 @@ public class principal extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-por-nueva-copia-24.png"))); // NOI18N
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-abrir-carpeta-24.png"))); // NOI18N
-        jToggleButton1.setFocusable(false);
-        jToggleButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jToggleButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jToggleButton1);
-
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-guardar-24.png"))); // NOI18N
-        jToggleButton2.setFocusable(false);
-        jToggleButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jToggleButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jToggleButton2);
-
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-deshacer-24.png"))); // NOI18N
-        jToggleButton3.setFocusable(false);
-        jToggleButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jToggleButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jToggleButton3);
-
-        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-rehacer-24.png"))); // NOI18N
-        jToggleButton4.setFocusable(false);
-        jToggleButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jToggleButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-abrir-carpeta-24.png"))); // NOI18N
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        jToolBar1.add(jToggleButton4);
+        jToolBar1.add(jButton2);
 
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-play-24.png"))); // NOI18N
-        jToggleButton5.setFocusable(false);
-        jToggleButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jToggleButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jToggleButton5);
-
-        btnAnalizar.setText("Analizar");
-        btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-guardar-24.png"))); // NOI18N
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnalizarActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
+        jToolBar1.add(jButton3);
+
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-deshacer-24.png"))); // NOI18N
+        jButton4.setFocusable(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton4);
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-rehacer-24.png"))); // NOI18N
+        jButton5.setFocusable(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton5);
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-play-24.png"))); // NOI18N
+        jButton6.setFocusable(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton6);
 
         jMenu1.setText("Archivo");
 
@@ -237,28 +243,19 @@ public class principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAnalizar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAnalizar)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
         );
 
@@ -305,21 +302,29 @@ public class principal extends javax.swing.JFrame {
 
     private void codigoFuenteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoFuenteKeyReleased
         int key = evt.getKeyCode();
-        if((key >= 65 && key <= 90) || (key >= 48 && key <= 57) || (key >= 97 && key <= 122) || (key != 27 && (key >= 37
-                && key <= 40) && !(key >= 16 && key <= 18) && key != 524 && key!=20)){
-            if(!getTitle().contains("*")){
-                setTitle(getTitle()+"*");
+        if ((key >= 65 && key <= 90) || (key >= 48 && key <= 57) || (key >= 97 && key <= 122) || (key != 27 && (key >= 37
+                && key <= 40) && !(key >= 16 && key <= 18) && key != 524 && key != 20)) {
+            if (!getTitle().contains("*")) {
+                setTitle(getTitle() + "*");
             }
         }
     }//GEN-LAST:event_codigoFuenteKeyReleased
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        lexico.setText("");
+        archivo.Nuevo(this);
+        clearAllComp();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAnalizarActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        lexico.setText("");
+        archivo.Abrir(this);
+        clearAllComp();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        archivo.Guardar(this);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,15 +360,19 @@ public class principal extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void clearAllComp(){
-        
+
+    public void clearAllComp() {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnalizar;
     public javax.swing.JTextArea codigoFuente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -379,11 +388,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextArea lexico;
     // End of variables declaration//GEN-END:variables

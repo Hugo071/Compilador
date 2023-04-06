@@ -100,4 +100,6 @@ else {lexeme=yytext(); return entonces;}
 break {lexeme=yytext(); return romper;}
 true {lexeme=yytext(); return verdadero;}
 false {lexeme=yytext(); return falso;}
+mostrar {lexeme=yytext(); return mostrar;}
+entrada {lexeme=yytext(); return entrada;}
  . {return ERROR;}

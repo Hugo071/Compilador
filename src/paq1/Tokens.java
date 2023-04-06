@@ -48,5 +48,7 @@ public enum Tokens {
     romper, 
     verdadero,
     falso,
+    mostrar,
+    entrada,
     ERROR
 }
