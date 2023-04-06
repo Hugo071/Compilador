@@ -19,6 +19,7 @@ public class principal extends javax.swing.JFrame {
         initComponents();
         inicializar();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        ///Comentario importante
     }
 
     private void inicializar() {
