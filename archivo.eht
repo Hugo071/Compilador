@@ -1,15 +1,2 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-21
+mostrar("hola mundo")
+int a = 5;
