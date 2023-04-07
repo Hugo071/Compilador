@@ -34,10 +34,13 @@ public class principal extends javax.swing.JFrame {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         ///Comentario importante
     }
-
-    private void AnalisisLexico() {
+    
+    private void AnalisisLexico()
+    {
+        lexico.setText("");
         Lexer lexer;
         try {
+            InfoTokens t;
             File codigo = new File("archivo.eht");
             FileOutputStream output = new FileOutputStream(codigo);
             byte[] bytes = codigoFuente.getText().getBytes();
@@ -45,22 +48,26 @@ public class principal extends javax.swing.JFrame {
             BufferedReader entrada = new BufferedReader(new InputStreamReader(new FileInputStream(codigo), "UTF-8"));
             lexer = new Lexer(entrada);
             String resu = "";
-            while (true) {
+            while(true)
+            {
                 Tokens token = lexer.yylex();
-                if (token == null) {
+                t = new InfoTokens();
+                if(token == null)
+                {
                     resu += "";
                     lexico.setText(resu);
                     return;
                 }
-                switch (token) {
+                switch(token)
+                {
                     case ERROR:
-                        resu += "Error... \n";
+                        resu += "Error lexico en la linea "+(t.numeroLinea+1)+"\n";
                         break;
                     default:
                         resu += "Token: " + token + "\n";
                         break;
                 }
-            }
+            } 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
