@@ -106,4 +106,4 @@ entrada {t.numeroLinea=yyline; lexeme=yytext(); return entrada;}
 "," {t.numeroLinea=yyline; lexeme=yytext(); return Coma;}
 ";" {t.numeroLinea=yyline; lexeme=yytext(); return PuntoComa;}
 
- . {return ERROR;}
+ . {t.numeroLinea=yyline; lexeme=yytext(); return ERROR;}

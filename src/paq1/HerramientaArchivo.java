@@ -260,7 +260,7 @@ public class HerramientaArchivo {
                         if(t!=null){
                             compF.codigoFuente.setText(t);
                             compF.setTitle(tFile.getName());
-                            compF.clearAllComp();
+                            compF.LimpiarComp();
                             selecFile = tSelecFile;
                             file = tFile;
                         }

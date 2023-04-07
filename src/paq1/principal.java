@@ -37,21 +37,20 @@ public class principal extends javax.swing.JFrame {
     
     private void AnalisisLexico()
     {
-        lexico.setText("");
         Lexer lexer;
+        InfoTokens infoToken;
         try {
-            InfoTokens t;
             File codigo = new File("archivo.eht");
             FileOutputStream output = new FileOutputStream(codigo);
             byte[] bytes = codigoFuente.getText().getBytes();
             output.write(bytes);
             BufferedReader entrada = new BufferedReader(new InputStreamReader(new FileInputStream(codigo), "UTF-8"));
             lexer = new Lexer(entrada);
+            infoToken = new InfoTokens();
             String resu = "";
             while(true)
             {
                 Tokens token = lexer.yylex();
-                t = new InfoTokens();
                 if(token == null)
                 {
                     resu += "";
@@ -61,10 +60,10 @@ public class principal extends javax.swing.JFrame {
                 switch(token)
                 {
                     case ERROR:
-                        resu += "Error lexico en la linea "+(t.numeroLinea+1)+"\n";
+                        resu += "Error lexico en la linea "+(infoToken.numeroLinea+1)+"\n";
                         break;
                     default:
-                        resu += "Token: " + token + "\n";
+                        resu += "Token: " + token +"\n";
                         break;
                 }
             } 
@@ -78,7 +77,6 @@ public class principal extends javax.swing.JFrame {
     private void inicializar() {
         archivo = new HerramientaArchivo();
         setTitle("[#FrijolesNet]");
-        String[] op = new String[]{"Guardar y continuar", "Descartar"};
         numerolinea2 = new NumeroLinea2(codigoFuente);
         jScrollPane2.setRowHeaderView(numerolinea2);
     }
@@ -90,9 +88,9 @@ public class principal extends javax.swing.JFrame {
             System.exit(0);
         }
     }
+    
+    public void LimpiarComp() {
 
-    public void LimpiarComponentes() {
-        lexico.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -348,7 +346,7 @@ public class principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         lexico.setText("");
         archivo.Nuevo(this);
-        clearAllComp();
+        LimpiarComp();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -376,13 +374,13 @@ public class principal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         lexico.setText("");
         archivo.Abrir(this);
-        clearAllComp();
+        LimpiarComp();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         lexico.setText("");
         archivo.guardarC(this);
-        clearAllComp();
+        LimpiarComp();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void codigoFuenteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoFuenteKeyReleased
@@ -398,13 +396,13 @@ public class principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         lexico.setText("");
         archivo.Nuevo(this);
-        clearAllComp();
+        LimpiarComp();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         lexico.setText("");
         archivo.Abrir(this);
-        clearAllComp();
+        LimpiarComp();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -472,10 +470,6 @@ public class principal extends javax.swing.JFrame {
                 new principal().setVisible(true);
             }
         });
-    }
-
-    public void clearAllComp() {
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -813,7 +813,7 @@ class Lexer {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
-            { return ERROR;
+            { t.numeroLinea=yyline; lexeme=yytext(); return ERROR;
             }
           // fall through
           case 51: break;
