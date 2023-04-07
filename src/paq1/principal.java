@@ -14,7 +14,6 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.text.DefaultEditorKit;
 import javax.swing.undo.UndoManager;
 
 /**
@@ -356,7 +355,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        new DefaultEditorKit.CopyAction();
+        codigoFuente.copy();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -426,11 +425,11 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        new DefaultEditorKit.CutAction();
+        codigoFuente.cut();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        new DefaultEditorKit.PasteAction();
+        codigoFuente.paste();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
