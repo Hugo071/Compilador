@@ -5,9 +5,51 @@
 
 package paq1;
 import static paq1.Tokens.*;
-import paq1.Token.*;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+
+class Token {
+    public String lexema;
+    public String token;
+    public int nLinea;
+
+    public Token(String lexema, String token, int nLinea) {
+        this.lexema = lexema;
+        this.token = token;
+        this.nLinea = nLinea;
+    }
+
+    public String getLexema() {
+        return lexema;
+    }
+
+    public void setLexema(String lexema) {
+        this.lexema = lexema;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public int getnLinea() {
+        return nLinea;
+    }
+
+    public void setnLinea(int nLinea) {
+        this.nLinea = nLinea;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString(); 
+    }
+    
+    
+}
 
 
 @SuppressWarnings("fallthrough")
@@ -403,7 +445,7 @@ class Lexer {
   /* user code: */
    public String lexeme;
    InfoTokens t = new InfoTokens();
-   Map<String,Token> tablaSimbolos = new HashMap<>();
+   Map<String,Token> tablaSimbolos = new LinkedHashMap<>();
 
 
   /**
@@ -1027,7 +1069,7 @@ class Lexer {
           // fall through
           case 92: break;
           case 43:
-            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"entero",yyline); tablaSimbolos.put(yytext(),t1); return entero;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"entero",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return entero;
             }
           // fall through
           case 93: break;

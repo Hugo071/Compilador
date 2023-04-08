@@ -1,1 +1,4 @@
-mostrar("hola mundo"); 
+entero a=65, entero c=0;
+flotante b=43.2;
+entero d=-1;
+a=10;
