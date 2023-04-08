@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -34,9 +36,8 @@ public class principal extends javax.swing.JFrame {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         ///Comentario importante
     }
-    
-    private void AnalisisLexico()
-    {
+
+    private void AnalisisLexico() {
         Lexer lexer;
         InfoTokens infoToken;
         try {
@@ -47,26 +48,31 @@ public class principal extends javax.swing.JFrame {
             BufferedReader entrada = new BufferedReader(new InputStreamReader(new FileInputStream(codigo), "UTF-8"));
             lexer = new Lexer(entrada);
             infoToken = new InfoTokens();
+            Token t2 = null;
             String resu = "";
-            while(true)
-            {
+            while (true) {
                 Tokens token = lexer.yylex();
-                if(token == null)
-                {
+                if (token == null) {
+                    //Heho para pruebas
+                    Iterator it = lexer.tablaSimbolos.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry<String, Token> entry = (Map.Entry) it.next();
+                        System.out.println("Lexema: " + entry.getValue().getLexema() + " Token: " + entry.getValue().getToken() + " Numero de linea: " + (entry.getValue().getnLinea() + 1));
+                    }
+                    //Hecho para pruebas
                     resu += "";
                     lexico.setText(resu);
                     return;
                 }
-                switch(token)
-                {
+                switch (token) {
                     case ERROR:
-                        resu += "Error lexico en la linea "+(infoToken.numeroLinea+1)+"\n";
+                        resu += "Error lexico en la linea " + (infoToken.numeroLinea + 1) + "\n";
                         break;
                     default:
-                        resu += "Token: " + token +"\n";
+                        resu += "Token: " + token + "\n";
                         break;
                 }
-            } 
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -88,7 +94,7 @@ public class principal extends javax.swing.JFrame {
             System.exit(0);
         }
     }
-    
+
     public void LimpiarComp() {
 
     }

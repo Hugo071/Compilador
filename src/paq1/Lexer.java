@@ -5,6 +5,51 @@
 
 package paq1;
 import static paq1.Tokens.*;
+import java.util.Map;
+import java.util.HashMap;
+
+class Token {
+    public String lexema;
+    public String token;
+    public int nLinea;
+
+    public Token(String lexema, String token, int nLinea) {
+        this.lexema = lexema;
+        this.token = token;
+        this.nLinea = nLinea;
+    }
+
+    public String getLexema() {
+        return lexema;
+    }
+
+    public void setLexema(String lexema) {
+        this.lexema = lexema;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public int getnLinea() {
+        return nLinea;
+    }
+
+    public void setnLinea(int nLinea) {
+        this.nLinea = nLinea;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString(); 
+    }
+    
+    
+}
 
 
 @SuppressWarnings("fallthrough")
@@ -400,6 +445,7 @@ class Lexer {
   /* user code: */
    public String lexeme;
    InfoTokens t = new InfoTokens();
+   Map<String,Token> tablaSimbolos = new HashMap<>();
 
 
   /**
@@ -823,242 +869,242 @@ class Lexer {
           // fall through
           case 52: break;
           case 3:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Negacion;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Negacion",yyline); tablaSimbolos.put(yytext(),t1); return Negacion;
             }
           // fall through
           case 53: break;
           case 4:
-            { t.numeroLinea=yyline; lexeme=yytext(); return id;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"id",yyline); tablaSimbolos.put(yytext(),t1); return id;
             }
           // fall through
           case 54: break;
           case 5:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Factorial;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Factorial",yyline); tablaSimbolos.put(yytext(),t1); return Factorial;
             }
           // fall through
           case 55: break;
           case 6:
-            { t.numeroLinea=yyline; lexeme=yytext(); return AbreParentesis;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AbreParentesis",yyline); tablaSimbolos.put(yytext(),t1); return AbreParentesis;
             }
           // fall through
           case 56: break;
           case 7:
-            { t.numeroLinea=yyline; lexeme=yytext(); return CierraParentesis;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"CierraParentesis",yyline); tablaSimbolos.put(yytext(),t1); return CierraParentesis;
             }
           // fall through
           case 57: break;
           case 8:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Producto;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Producto",yyline); tablaSimbolos.put(yytext(),t1); return Producto;
             }
           // fall through
           case 58: break;
           case 9:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Suma;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Suma",yyline); tablaSimbolos.put(yytext(),t1); return Suma;
             }
           // fall through
           case 59: break;
           case 10:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Coma;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Coma",yyline); tablaSimbolos.put(yytext(),t1); return Coma;
             }
           // fall through
           case 60: break;
           case 11:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Resta;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Resta",yyline); tablaSimbolos.put(yytext(),t1); return Resta;
             }
           // fall through
           case 61: break;
           case 12:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Division;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Division",yyline); tablaSimbolos.put(yytext(),t1); return Division;
             }
           // fall through
           case 62: break;
           case 13:
-            { t.numeroLinea=yyline; lexeme=yytext(); return litint;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litint",yyline); tablaSimbolos.put(yytext(),t1); return litint;
             }
           // fall through
           case 63: break;
           case 14:
-            { t.numeroLinea=yyline; lexeme=yytext(); return PuntoComa;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"PuntoyComa",yyline); tablaSimbolos.put(yytext(),t1); return PuntoComa;
             }
           // fall through
           case 64: break;
           case 15:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Menor;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Menor",yyline); tablaSimbolos.put(yytext(),t1); return Menor;
             }
           // fall through
           case 65: break;
           case 16:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Igual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Igual",yyline); tablaSimbolos.put(yytext(),t1); return Igual;
             }
           // fall through
           case 66: break;
           case 17:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Mayor;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Mayor",yyline); tablaSimbolos.put(yytext(),t1); return Mayor;
             }
           // fall through
           case 67: break;
           case 18:
-            { t.numeroLinea=yyline; lexeme=yytext(); return AbreCorchete;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AbreCorchetes",yyline); tablaSimbolos.put(yytext(),t1); return AbreCorchete;
             }
           // fall through
           case 68: break;
           case 19:
-            { t.numeroLinea=yyline; lexeme=yytext(); return CierraCorchete;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"CierraCorchetes",yyline); tablaSimbolos.put(yytext(),t1); return CierraCorchete;
             }
           // fall through
           case 69: break;
           case 20:
-            { t.numeroLinea=yyline; lexeme=yytext(); return AbreLLave;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AbreLlave",yyline); tablaSimbolos.put(yytext(),t1); return AbreLLave;
             }
           // fall through
           case 70: break;
           case 21:
-            { t.numeroLinea=yyline; lexeme=yytext(); return CierreLLave;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"CierraLlave",yyline); tablaSimbolos.put(yytext(),t1); return CierreLLave;
             }
           // fall through
           case 71: break;
           case 22:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Diferencia;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Diferencia",yyline); tablaSimbolos.put(yytext(),t1); return Diferencia;
             }
           // fall through
           case 72: break;
           case 23:
-            { t.numeroLinea=yyline; lexeme=yytext(); return litcad;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litcad",yyline); tablaSimbolos.put(yytext(),t1); return litcad;
             }
           // fall through
           case 73: break;
           case 24:
-            { t.numeroLinea=yyline; lexeme=yytext(); return FactIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"FactIgual",yyline); tablaSimbolos.put(yytext(),t1); return FactIgual;
             }
           // fall through
           case 74: break;
           case 25:
-            { t.numeroLinea=yyline; lexeme=yytext(); return AND;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AND",yyline); tablaSimbolos.put(yytext(),t1); return AND;
             }
           // fall through
           case 75: break;
           case 26:
-            { t.numeroLinea=yyline; lexeme=yytext(); return litcar;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litcar",yyline); tablaSimbolos.put(yytext(),t1); return litcar;
             }
           // fall through
           case 76: break;
           case 27:
-            { t.numeroLinea=yyline; lexeme=yytext(); return PorIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"PorIgual",yyline); tablaSimbolos.put(yytext(),t1); return PorIgual;
             }
           // fall through
           case 77: break;
           case 28:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Incremento;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Incremento",yyline); tablaSimbolos.put(yytext(),t1); return Incremento;
             }
           // fall through
           case 78: break;
           case 29:
-            { t.numeroLinea=yyline; lexeme=yytext(); return MasIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MasIgual",yyline); tablaSimbolos.put(yytext(),t1); return MasIgual;
             }
           // fall through
           case 79: break;
           case 30:
-            { t.numeroLinea=yyline; lexeme=yytext(); return Decremento;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Decremento",yyline); tablaSimbolos.put(yytext(),t1); return Decremento;
             }
           // fall through
           case 80: break;
           case 31:
-            { t.numeroLinea=yyline; lexeme=yytext(); return MenosIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MenosIgual",yyline); tablaSimbolos.put(yytext(),t1); return MenosIgual;
             }
           // fall through
           case 81: break;
           case 32:
-            { t.numeroLinea=yyline; lexeme=yytext(); return DivIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"DivIgual",yyline); tablaSimbolos.put(yytext(),t1); return DivIgual;
             }
           // fall through
           case 82: break;
           case 33:
-            { t.numeroLinea=yyline; lexeme=yytext(); return MenorIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MenorIgual",yyline); tablaSimbolos.put(yytext(),t1); return MenorIgual;
             }
           // fall through
           case 83: break;
           case 34:
-            { t.numeroLinea=yyline; lexeme=yytext(); return DobleIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"DobleIgual",yyline); tablaSimbolos.put(yytext(),t1); return DobleIgual;
             }
           // fall through
           case 84: break;
           case 35:
-            { t.numeroLinea=yyline; lexeme=yytext(); return MayorIgual;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MayorIgual",yyline); tablaSimbolos.put(yytext(),t1); return MayorIgual;
             }
           // fall through
           case 85: break;
           case 36:
-            { t.numeroLinea=yyline; lexeme=yytext(); return si;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"si",yyline); tablaSimbolos.put(yytext(),t1); return si;
             }
           // fall through
           case 86: break;
           case 37:
-            { t.numeroLinea=yyline; lexeme=yytext(); return OR;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"OR",yyline); tablaSimbolos.put(yytext(),t1); return OR;
             }
           // fall through
           case 87: break;
           case 38:
-            { t.numeroLinea=yyline; lexeme=yytext(); return litflo;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litflo",yyline); tablaSimbolos.put(yytext(),t1); return litflo;
             }
           // fall through
           case 88: break;
           case 39:
-            { t.numeroLinea=yyline; lexeme=yytext(); return cadena;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"cadena",yyline); tablaSimbolos.put(yytext(),t1); return cadena;
             }
           // fall through
           case 89: break;
           case 40:
-            { t.numeroLinea=yyline; lexeme=yytext(); return caracter;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"caracter",yyline); tablaSimbolos.put(yytext(),t1); return caracter;
             }
           // fall through
           case 90: break;
           case 41:
-            { t.numeroLinea=yyline; lexeme=yytext(); return por;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"por",yyline); tablaSimbolos.put(yytext(),t1); return por;
             }
           // fall through
           case 91: break;
           case 42:
-            { t.numeroLinea=yyline; lexeme=yytext(); return falso;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"falso",yyline); tablaSimbolos.put(yytext(),t1); return falso;
             }
           // fall through
           case 92: break;
           case 43:
-            { t.numeroLinea=yyline; lexeme=yytext(); return entero;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"entero",yyline); tablaSimbolos.put(yytext(),t1); return entero;
             }
           // fall through
           case 93: break;
           case 44:
-            { t.numeroLinea=yyline; lexeme=yytext(); return romper;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"romper",yyline); tablaSimbolos.put(yytext(),t1); return romper;
             }
           // fall through
           case 94: break;
           case 45:
-            { t.numeroLinea=yyline; lexeme=yytext(); return entrada;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"entrada",yyline); tablaSimbolos.put(yytext(),t1); return entrada;
             }
           // fall through
           case 95: break;
           case 46:
-            { t.numeroLinea=yyline; lexeme=yytext(); return mostrar;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"mostrar",yyline); tablaSimbolos.put(yytext(),t1); return mostrar;
             }
           // fall through
           case 96: break;
           case 47:
-            { t.numeroLinea=yyline; lexeme=yytext(); return booleano;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"booleano",yyline); tablaSimbolos.put(yytext(),t1); return booleano;
             }
           // fall through
           case 97: break;
           case 48:
-            { t.numeroLinea=yyline; lexeme=yytext(); return entonces;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"entonces",yyline); tablaSimbolos.put(yytext(),t1); return entonces;
             }
           // fall through
           case 98: break;
           case 49:
-            { t.numeroLinea=yyline; lexeme=yytext(); return flotante;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"flotante",yyline); tablaSimbolos.put(yytext(),t1); return flotante;
             }
           // fall through
           case 99: break;
           case 50:
-            { t.numeroLinea=yyline; lexeme=yytext(); return verdadero;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"verdadero",yyline); tablaSimbolos.put(yytext(),t1); return verdadero;
             }
           // fall through
           case 100: break;
