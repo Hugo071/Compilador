@@ -18,9 +18,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class HerramientaArchivo {
     JFileChooser selecFile = new JFileChooser();
     File file;
-    String[] botones = new String[]{"Guardar y continuar", "Descartar"};
-    FileNameExtensionFilter filtro = new FileNameExtensionFilter("TXT", "txt");
-    FileNameExtensionFilter filtro2 = new FileNameExtensionFilter("EHT", "eht");
+    String[] botones = new String[]{"Guardar y continuar", "Continuar"};
+    FileNameExtensionFilter filtro = new FileNameExtensionFilter("ETH", "eth");
     
     
     public String getTextFile(File file){
@@ -36,10 +35,10 @@ public class HerramientaArchivo {
                     break;
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("El archivo no pudo ser encontrado... "+ex.getMessage());
+            System.out.println("El archivo no pudo ser encontrado o no existe"+ex.getMessage());
             return null;
         } catch (IOException ex) {
-            System.out.println("Error al leer el archivo... "+ex.getMessage());
+            System.out.println("Error de lectura del archivo"+ex.getMessage());
             return null;
         }
         return text;   
@@ -52,10 +51,10 @@ public class HerramientaArchivo {
             byte[] bytesText = text.getBytes();
             output.write(bytesText);
         } catch (FileNotFoundException ex) {
-            System.out.println("Error de fileNotFoundException... "+ex.getMessage());
+            System.out.println("Error, el archivo no es encontro"+ex.getMessage());
             return false;
         } catch (IOException ex) {
-            System.out.println("Error al escribir en el archivo... "+ex.getMessage());
+            System.out.println("Error de escritura deel archivo"+ex.getMessage());
             return false;
         } 
         return true;
@@ -64,13 +63,12 @@ public class HerramientaArchivo {
     
     public boolean guardarEditNuevo(File fileG, JFileChooser selecFileG, principal compF){
         selecFileG.setFileFilter(filtro);
-        selecFileG.setFileFilter(filtro2);
         int x;
-        if(compF.getTitle().equals("[#FrijolesNet]*"))
+        if(compF.getTitle().equals("ETHIDE*"))
             x = 0;
         else
-            x = JOptionPane.showOptionDialog(compF, "El archivo actual está siendo editado, ¿desea guardar los cambios?",
-                                            "¿Descartar edición?", -1, 3, null, botones, botones[0]);
+            x = JOptionPane.showOptionDialog(compF, "El archivo actual ha sido editado, ¿desea guardar los cambios?",
+                                            "Cambios de edición", -1, 3, null, botones, botones[0]);
         if(x==0){
             if(selecFileG.getSelectedFile() != null){
                 boolean save = saveFile(fileG, compF.codigoFuente.getText());
@@ -78,47 +76,41 @@ public class HerramientaArchivo {
                     compF.setTitle(fileG.getName());
                     
             }
-            else if(compF.getTitle().equals("[#FrijolesNet]*")){
+            else if(compF.getTitle().equals("ETHIDE*")){
                 int y = JOptionPane.showOptionDialog(compF, "¿Desea guardar el archivo actual?",
-                                                    "¿Descartar edición de archivo nuevo?", -1, 3, null, botones, botones[0]);
+                                                    "Edición de archivo nuevo", -1, 3, null, botones, botones[0]);
                 if(y==0){
                     if(selecFileG.showDialog(compF, "Guardar") == JFileChooser.APPROVE_OPTION){
                         fileG = selecFileG.getSelectedFile();
                         String fileGname = fileG.getName();
                 
-                        if(fileGname.endsWith(".eht")){
+                        if(fileGname.endsWith(".eth")){
                             if(!fileGname.split("[.]")[0].replace(" ","").equals("")){
                                 System.out.println(!fileG.exists());
                                 if(!fileG.exists())
                                     guardarArch(fileG, compF);  
                                 else{
-                                    int z = JOptionPane.showConfirmDialog(compF, "Ya hay un archivo con este nombre, ¿desea "
-                                                                         +"sobreescribirlo?", "Sobreescribir archivo", 2);
+                                    int z = JOptionPane.showConfirmDialog(compF, "Ya existe un archivo con este nombre, ¿desea "
+                                                                         +"sobreescribirlo?", "Sobreescribir archivo existente", 2);
                                     if(z == 0)
                                         guardarArch(fileG, compF);                                        
                                 }
-                            }
-                            else{
+                            }else{
                                 JOptionPane.showMessageDialog(compF, "Escriba un nombre válido para el archivo",
                                                               "Nombre inválido", 2);
-                                //selecFile = new JFileChooser();
-                                //file = null;
                                 return false;
                             }
-                        }
-                        else{
-                            JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.emst'",
+                        }else{
+                            JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eth'",
                                                           "Extensión inválida", 2); 
                             return false;
                         }
                     }
                     
-                }
-                else{
+                }else{
                      return true;
                 }
-            }
-            else{
+            }else{
             int z = JOptionPane.showConfirmDialog(compF, "Ya hay un archivo con este nombre, ¿desea "
                                                                          +"sobreescribirlo?", "Sobreescribir archivo", 2);
                 if(z == 0)
@@ -131,12 +123,13 @@ public class HerramientaArchivo {
     
     
     public boolean guardarEditAbrir(File fileG, JFileChooser selecFileG, principal compF){
+        selecFileG.setFileFilter(filtro);
         int x;
-        if(compF.getTitle().equals("[#FrijolesNet]*"))
+        if(compF.getTitle().equals("ETHIDE*"))
             x = 0;
         else
-            x = JOptionPane.showOptionDialog(compF, "El archivo actual está siendo editado, ¿desea guardar los cambios?",
-                                            "¿Descartar edición?", -1, 3, null, botones, botones[0]);
+            x = JOptionPane.showOptionDialog(compF, "El archivo actual ha sido editado, ¿desea guardar los cambios?",
+                                            "Cambios de edición", -1, 3, null, botones, botones[0]);
         if(x==0){
             if(selecFileG.getSelectedFile() != null){
                 boolean save = saveFile(fileG, compF.codigoFuente.getText());
@@ -144,21 +137,21 @@ public class HerramientaArchivo {
                     compF.setTitle(fileG.getName());
                     
             }
-            else if(compF.getTitle().equals("[#FrijolesNet]*")){
+            else if(compF.getTitle().equals("ETHIDE*")){
                 int y = JOptionPane.showOptionDialog(compF, "¿Desea guardar el archivo actual?",
-                                                    "¿Descartar edición de archivo nuevo?", -1, 3, null, botones, botones[0]);
+                                                    "Edición de archivo nuevo", -1, 3, null, botones, botones[0]);
                
                 if(y==0){
                     if(selecFileG.showDialog(compF, "Guardar") == JFileChooser.APPROVE_OPTION){
                         fileG = selecFileG.getSelectedFile();
                         String fileGname = fileG.getName();
                 
-                        if(fileGname.endsWith(".eht")){
+                        if(fileGname.endsWith(".eth")){
                             if(!fileGname.split("[.]")[0].replace(" ","").equals("")){
                                 if(!fileG.exists())
                                     guardarArch(fileG, compF);  
                                 else{
-                                    int z = JOptionPane.showConfirmDialog(compF, "Ya hay un archivo con este nombre, ¿desea "
+                                    int z = JOptionPane.showConfirmDialog(compF, "Ya existe un archivo con este nombre, ¿desea "
                                                                          +"sobreescribirlo?", "Sobreescribir archivo", 2);
                                     if(z == 0)
                                         guardarArch(fileG, compF);  
@@ -174,7 +167,7 @@ public class HerramientaArchivo {
                             }
                         }
                         else{
-                            JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eht'",
+                            JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eth'",
                                                           "Extensión inválida", 2); 
                             return false;
                         }
@@ -183,7 +176,7 @@ public class HerramientaArchivo {
                 }
                 else{
                      compF.codigoFuente.setText("");
-                     compF.setTitle("[#FrijolesNet]");
+                     compF.setTitle("ETHIDE");
                 }
             }
             else{
@@ -196,7 +189,7 @@ public class HerramientaArchivo {
         }
         else{
             compF.codigoFuente.setText("");
-            compF.setTitle("[#FrijolesNet]");
+            compF.setTitle("ETHIDE");
         }
         return true;
     }
@@ -216,14 +209,14 @@ public class HerramientaArchivo {
         
         if(compF.getTitle().contains("*")){
             if(guardarEditNuevo(file, selecFile, compF)){
-                compF.setTitle("[#FrijolesNet]");
+                compF.setTitle("ETHIDE");
                 compF.codigoFuente.setText("");
                 selecFile = new JFileChooser();
                 file = null;
             }
         }
         else{
-            compF.setTitle("[#FrijolesNet]");
+            compF.setTitle("ETHIDE");
             compF.codigoFuente.setText("");
             selecFile = new JFileChooser();
             file = null;
@@ -242,14 +235,13 @@ public class HerramientaArchivo {
         JFileChooser tSelecFile = new JFileChooser();
         File tFile;
         tSelecFile.setFileFilter(filtro);
-        tSelecFile.setFileFilter(filtro2);
         
         if(tSelecFile.showDialog(compF, "Abrir") == JFileChooser.APPROVE_OPTION){
             tFile = tSelecFile.getSelectedFile();
             String filename = tFile.getName();
              
 
-            if(filename.endsWith(".eht")){
+            if(filename.endsWith(".eth")){
                 if(!filename.split("[.]")[0].replace(" ","").equals("")){
                     if(!tFile.exists())
                         JOptionPane.showMessageDialog(compF, "El archivo que sea desea abrir no existe en el directorio especificado",
@@ -278,7 +270,7 @@ public class HerramientaArchivo {
                 }
             }
             else{
-                JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eht'",
+                JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eth'",
                                              "Extensión inválida", 2);  
                 return false;
             }
@@ -295,21 +287,23 @@ public class HerramientaArchivo {
             JFileChooser tSelecFile = new JFileChooser();
             File tFile;
             tSelecFile.setFileFilter(filtro);
-            tSelecFile.setFileFilter(filtro2);
+            //FileNameExtensionFilter ext = new FileNameExtensionFilter("Archivos eth", "eth");
+            //tSelecFile.setFileFilter(ext);
             
             if(tSelecFile.showDialog(compF, "Guardar") == JFileChooser.APPROVE_OPTION){
                 tFile = tSelecFile.getSelectedFile();
                 String filename = tFile.getName();
                 
-                if(filename.endsWith(".eht")){
+                if(true){
                     if(!filename.split("[.]")[0].replace(" ","").equals("")){
                         if(!tFile.exists()){
                             guardarArch(tFile, compF);  
                             file = tFile;
+                            System.out.println(tFile);
                             selecFile = tSelecFile;
                         }
                         else{
-                            int x = JOptionPane.showConfirmDialog(compF, "Ya hay un archivo con este nombre, ¿desea "
+                            int x = JOptionPane.showConfirmDialog(compF, "Ya existe un archivo con este nombre, ¿desea "
                                                                 +"sobreescribirlo?", "Sobreescribir archivo", 2);
                             if(x == 0){
                                 guardarArch(tFile, compF); 
@@ -332,7 +326,7 @@ public class HerramientaArchivo {
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eht'",
+                    JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eth'",
                                                   "Extensión inválida", 2); 
                     selecFile = new JFileChooser();
                     file = null;
@@ -349,14 +343,13 @@ public class HerramientaArchivo {
     public void guardarC(principal compF){
         JFileChooser tSelecFile = new JFileChooser();
         tSelecFile.setFileFilter(filtro);
-        tSelecFile.setFileFilter(filtro2);
         
         if(tSelecFile.showDialog(compF, "Guardar como") == JFileChooser.APPROVE_OPTION){
             File tFile;
             tFile = tSelecFile.getSelectedFile();
             String filename = tFile.getName();
                 
-            if(filename.endsWith(".eht")){
+            if(filename.endsWith(".eth")){
                 if(!filename.split("[.]")[0].replace(" ","").equals("")){
                     guardarArch(tFile, compF);  
                     file = tFile;
@@ -367,7 +360,7 @@ public class HerramientaArchivo {
                                                  "Nombre inválido", 2); 
             }
             else
-                JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eht'",
+                JOptionPane.showMessageDialog(compF, "El archivo debe de tener la extensión '.eth'",
                                              "Extensión inválida", 2);  
         }
     }

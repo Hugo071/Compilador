@@ -33,7 +33,6 @@ public class VentanaCarga extends javax.swing.JFrame {
         barraProgreso = new javax.swing.JProgressBar();
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/White.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));

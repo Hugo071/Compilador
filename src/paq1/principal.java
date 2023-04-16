@@ -44,7 +44,7 @@ public class principal extends javax.swing.JFrame {
         Lexer lexer;
         InfoTokens infoToken;
         try {
-            File codigo = new File("archivo.eht");
+            File codigo = new File("archivo.eth");
             FileOutputStream output = new FileOutputStream(codigo);
             byte[] bytes = codigoFuente.getText().getBytes();
             output.write(bytes);
@@ -85,14 +85,14 @@ public class principal extends javax.swing.JFrame {
 
     private void inicializar() {
         archivo = new HerramientaArchivo();
-        setTitle("[#FrijolesNet]");
+        setTitle("ETHIDE");
         numerolinea2 = new NumeroLinea2(codigoFuente);
         jScrollPane2.setRowHeaderView(numerolinea2);
     }
 
     private void Cerrar() {
         String opciones[] = {"Cerrar", "Cancelar"};
-        int eleccion = JOptionPane.showOptionDialog(this, "Estas seguro de que quieres cerrar el programa? Todo cambio sin guardar se perdera", "Cierre de programa", 0, 0, null, opciones, EXIT_ON_CLOSE);
+        int eleccion = JOptionPane.showOptionDialog(this, "¿Estas seguro de que quieres cerrar el programa? Todo cambio sin guardar se perdera", "Cierre de programa", 0, 0, null, opciones, EXIT_ON_CLOSE);
         if (eleccion == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
