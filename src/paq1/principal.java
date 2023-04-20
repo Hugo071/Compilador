@@ -69,10 +69,100 @@ public class principal extends javax.swing.JFrame {
                 }
                 switch (token) {
                     case ERROR:
-                        resu += "Error lexico en la linea " + (infoToken.numeroLinea + 1) + "\n";
+                        resu += "Error lexico en la linea " + (infoToken.numeroLinea + 1) +" simbolo: "+ lexer.lexeme + " no esperado" + "\n";
+                        break;
+                    case Igual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case MasIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case MenosIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case PorIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case DivIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case FactIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Suma:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Resta:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Division:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Producto:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Factorial:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Incremento:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Decremento:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case DobleIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Diferencia:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Menor:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Mayor:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case MayorIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case MenorIgual:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case OR:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case AND:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Negacion:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case AbreParentesis:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case CierraParentesis:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case AbreCorchete:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case CierraCorchete:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case AbreLLave:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case CierreLLave:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case Coma:
+                        resu += lexer.lexeme + "\n";
+                        break;
+                    case PuntoComa:
+                        resu += lexer.lexeme + "\n";
                         break;
                     default:
-                        resu += "Token: " + token + "\n";
+                        resu += token + "\n";
                         break;
                 }
             }
