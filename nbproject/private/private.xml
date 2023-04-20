@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/HerramientaArchivo.java</file>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/VentanaCarga.java</file>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/InfoTokens.java</file>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/Tokens.java</file>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/Lexico.java</file>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/Lexer.java</file>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/Lexer.flex</file>
+            <file>file:/C:/Users/CSjes/Documents/NetBeansProjects/Compilador/src/paq1/principal.java</file>
+        </group>
     </open-files>
 </project-private>

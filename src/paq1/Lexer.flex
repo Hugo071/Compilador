@@ -111,45 +111,45 @@ entrada {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"e
 {entero} {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litint",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return litint;}
 
 /* Simbolos de asignación */
-"=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Igual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Igual;}
-"+=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MasIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MasIgual;}
-"-=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MenosIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MenosIgual;}
-"*=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"PorIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return PorIgual;}
-"/=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"DivIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return DivIgual;}
-"%=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"FactIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return FactIgual;}
+"=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Igual;}
+"+=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"+=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MasIgual;}
+"-=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"-=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MenosIgual;}
+"*=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"*=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return PorIgual;}
+"/=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"/=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return DivIgual;}
+"%=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"%=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return FactIgual;}
 
 /* Simbolos aritmeticos */
-"+" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Suma",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Suma;}
-"-" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Resta",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Resta;}
-"/" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Division",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Division;}
-"*" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Producto",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Producto;}
-"%" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Factorial",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Factorial;}
-"++" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Incremento",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Incremento;}
-"--" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Decremento",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Decremento;}
+"+" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"+",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Suma;}
+"-" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"-",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Resta;}
+"/" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"/",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Division;}
+"*" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"*",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Producto;}
+"%" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"%",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Factorial;}
+"++" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"++",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Incremento;}
+"--" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"--",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Decremento;}
 
 /* Simbolos de comparación */
-"==" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"DobleIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return DobleIgual;}
-"!=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Diferencia",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Diferencia;}
-"<" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Menor",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Menor;}
-">" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Mayor",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Mayor;}
-">=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MayorIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MayorIgual;}
-"<=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"MenorIgual",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MenorIgual;}
+"==" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"==",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return DobleIgual;}
+"!=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"!=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Diferencia;}
+"<" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"<",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Menor;}
+">" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),">",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Mayor;}
+">=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),">=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MayorIgual;}
+"<=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"<=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return MenorIgual;}
 
 /* Simbolos logicos */
-"||" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"OR",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return OR;}
-"&&" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AND",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AND;}
-"!" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Negacion",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Negacion;}
+"||" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"||",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return OR;}
+"&&" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"&&",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AND;}
+"!" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"!",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Negacion;}
 
 /* Simbolos de agrupación */
-"(" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AbreParentesis",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;}
-")" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"CierraParentesis",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;}
-"[" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AbreCorchetes",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreCorchete;}
-"]" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"CierraCorchetes",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraCorchete;}
-"{" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"AbreLlave",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreLLave;}
-"}" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"CierraLlave",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierreLLave;}
+"(" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),")",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;}
+")" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"(",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;}
+"[" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"[",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreCorchete;}
+"]" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"]",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraCorchete;}
+"{" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"{",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreLLave;}
+"}" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"}",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierreLLave;}
 
 /* Simbolos de puntuación */
-"," {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Coma",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Coma;}
-";" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"PuntoyComa",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return PuntoComa;}
+"," {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),",",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Coma;}
+";" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),";",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return PuntoComa;}
 
  . {t.numeroLinea=yyline; lexeme=yytext(); return ERROR;}

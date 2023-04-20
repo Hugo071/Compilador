@@ -904,7 +904,7 @@ class Lexer {
           // fall through
           case 59: break;
           case 10:
-            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Coma",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Lexer.lexeme;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"Coma",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Coma;
             }
           // fall through
           case 60: break;
