@@ -74,6 +74,7 @@ caracter = \'(\\.|[^\'\\])?\'
 cadena = \"(\\.|[^\"\\])*\"
 flotante = (-?[1-9][0-9]*\.[0-9]*[1-9])|(0\.0)|(-?[1-9][0-9]*\.0)|(-?[1-9][0-9]*\.[0-9]*[1-9][eE][-+][1-9][0-9]*)|(-?0\.[0-9]*[1-9][eE][-+][1-9][0-9]*)
 entero = (0|-?[1-9][0-9]*)
+num = {entero} | {flotante}
 
 id = {letra}({letra}|{digito})*
 %%
@@ -104,11 +105,8 @@ entrada {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"e
 /* Literal cadena */
 {cadena} {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litcad",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return litcad;}
 
-/* Literal flotante */
-{flotante} {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litflo",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return litflo;}
-
-/* Literal entero */
-{entero} {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"litint",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return litint;}
+/* num */
+{num} {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"num",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return num;}
 
 /* Simbolos de asignación */
 "=" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"=",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Igual;}

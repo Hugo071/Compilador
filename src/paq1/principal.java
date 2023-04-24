@@ -29,6 +29,7 @@ public class principal extends javax.swing.JFrame {
     NumeroLinea2 numerolinea2;
     HerramientaArchivo archivo;
     UndoManager manager;
+    //String componentes;
 
     public principal() {
         this.manager = new UndoManager();
@@ -57,9 +58,11 @@ public class principal extends javax.swing.JFrame {
                 Tokens token = lexer.yylex();
                 if (token == null) {
                     //Heho para pruebas
+                    //componentes = "";
                     Iterator it = lexer.tablaSimbolos.entrySet().iterator();
                     while (it.hasNext()) {
                         Map.Entry<String, Token> entry = (Map.Entry) it.next();
+                        //componentes += entry.getValue().getToken()+",";
                         System.out.println("Lexema: " + entry.getValue().getLexema() + " Token: " + entry.getValue().getToken() + " Numero de linea: " + (entry.getValue().getnLinea() + 1));
                     }
                     //Hecho para pruebas
@@ -74,7 +77,6 @@ public class principal extends javax.swing.JFrame {
                     default:
                         if (token.getSimbolo() == null) {
                             resu += token + "\n";
-                            System.out.println(token);
                         } else {
                             resu += token.getSimbolo() + "\n";
                         }
@@ -86,6 +88,13 @@ public class principal extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void AnalisisSintactico()
+    {
+        /*componentes += "$";
+        String arraycomp[];
+        arraycomp = componentes.split(",");*/
     }
 
     private void inicializar() {
@@ -432,6 +441,7 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         AnalisisLexico();
+        AnalisisSintactico();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
