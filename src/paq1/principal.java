@@ -19,6 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.undo.UndoManager;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
+
 
 /**
  *
@@ -30,6 +34,22 @@ public class principal extends javax.swing.JFrame {
     HerramientaArchivo archivo;
     UndoManager manager;
     //String componentes;
+    Lexer lexer;
+    public Stack<String> pilaAux = new Stack(); //Pila auxiliar
+    public Stack<String> pilaPrincipal = new Stack(); //Pila principal
+    ArrayList<String> cadena = new ArrayList<>(Arrays.asList("num","+","id","%",")","num","%","id","-","id","num")); //Arreglo que almacena los componentes del lexico
+    ArrayList<String> noTerminales = new ArrayList<>(Arrays.asList("E","E'","T","T'","F")); //Variable no terminales de las filas 
+    ArrayList<String> terminales = new ArrayList<>(Arrays.asList("(",")","id","num","litcar","litcad","+","-",
+    "*","/","%","$")); //Variable no terminales de las columnas 
+    public String componente; //Va guardando de uno por uno los componentes del arreglo durante el for
+    public String[][] transicion = {
+            {"T E'","Saltar","T E'","T E'","T E'","T E'","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","+ T E'","- T E'","Vacia","Vacia","Vacia","Vacia"},
+            {"F T'","Saltar","F T'","F T'","F T'","F T'","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Vacia","Vacia","* F T'","/ F T'","% F T'","Vacia"},
+            {"( E )","Saltar","id","num","litcar","litcad","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"}
+    };
+    
 
     public principal() {
         this.manager = new UndoManager();
@@ -42,7 +62,6 @@ public class principal extends javax.swing.JFrame {
     }
 
     private void AnalisisLexico() {
-        Lexer lexer;
         InfoTokens infoToken;
         try {
             File codigo = new File("archivo.eth");
@@ -62,8 +81,9 @@ public class principal extends javax.swing.JFrame {
                     Iterator it = lexer.tablaSimbolos.entrySet().iterator();
                     while (it.hasNext()) {
                         Map.Entry<String, Token> entry = (Map.Entry) it.next();
+                        AnalisisSintactico(entry.getValue().getToken(), entry.getValue().getLexema(), (entry.getValue().getnLinea() + 1)+"");
                         //componentes += entry.getValue().getToken()+",";
-                        System.out.println("Lexema: " + entry.getValue().getLexema() + " Token: " + entry.getValue().getToken() + " Numero de linea: " + (entry.getValue().getnLinea() + 1));
+                        //System.out.println("Lexema: " + entry.getValue().getLexema() + " Token: " + entry.getValue().getToken() + " Numero de linea: " + (entry.getValue().getnLinea() + 1));
                     }
                     //Hecho para pruebas
                     resu += "";
@@ -90,11 +110,117 @@ public class principal extends javax.swing.JFrame {
         }
     }
     
-    private void AnalisisSintactico()
+    private void AnalisisSintactico(String comp, String lexema, String nlinea)
     {
-        /*componentes += "$";
-        String arraycomp[];
-        arraycomp = componentes.split(",");*/
+        String letraPila, dir;
+        int ncol, nfil; //Numero de columnas y filas
+        boolean ban;
+        componente=comp; //Se almacena el componente a analizar
+        ban=true;
+        System.out.println(componente);
+        while(ban==true){ //Este while sirve para definir si se sigue usando el mismo componente o avanza
+            letraPila=pilaPrincipal.peek(); //Se lamacena cual es el valor que esta en la pila principal
+            if(terminales.contains(letraPila) && !componente.equals(letraPila)){
+                //Se verifica si el elemento de la pila es terminal y si es diferente al componente a analizar
+                System.out.println("Error sintactico en la linea " + nlinea + " se esperaba el simbolo: "+letraPila);
+                pilaPrincipal.pop();
+                ban=true;
+            }else{
+                if(componente.equals("$") && pilaPrincipal.peek().equals("$")){
+                    //Esto ve si ya se llego al final de la cadena y pila
+                    System.out.println("Analisis sintactico finalizado correctamente");
+                    //System.out.println("Cadena final resultante: "+res);
+                    break;
+            }else if(componente.equals(pilaPrincipal.peek())){
+                    //Compara si el componente que se saco de la cadena es igual al valor de la Pila
+                    System.out.println("concuerda"); //Accion de concuerda
+                    //res+=componente;
+                    pilaPrincipal.pop();
+                    ban = false;
+                    break;
+            }
+            ncol=0;
+            nfil=0;
+            //Calcula la posicion de las filas para la tabla de transicion
+            for (String col : terminales) {
+                if(col.equals(componente))
+                    break;
+                else
+                    ncol++;
+            }
+            //Calcula la posicion de las columnas para la tabla de transicion
+            for (String fila : noTerminales) {
+                if(fila.equals(letraPila)){
+                    break;
+                }else{
+                    nfil++;
+                }
+            }
+            dir=transicion[nfil][ncol]; //dir guarda la accion de la tabla de transicion
+                    //AccionPilaPrin(dir);
+                        switch(dir){
+                            case "Vacia" -> {
+                                System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                System.out.print("\t"+pilaPrincipal.peek());
+                                System.out.print("->"+dir+"\n");
+                                pilaPrincipal.pop();
+                                ban = true;
+                                break;
+                            }
+                            case "Saltar" -> {
+                                System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                System.out.print("\t"+pilaPrincipal.peek());
+                                System.out.print("->"+dir+"\n");
+                                System.out.println("Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " saltar");
+                                ban = false;
+                                break;
+                            }
+                            case "Sacar" -> {
+                                System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                System.out.print("\t"+pilaPrincipal.peek());
+                                System.out.print("->"+dir+"\n");
+                                pilaPrincipal.pop();
+                                System.out.println("Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " sacar");
+                                ban = true;
+                                break;
+                            }
+                            default -> {
+                                if(terminales.contains(dir)){
+                                    //Si la accion que se saco es una terminal entra aqui
+                                    System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                    System.out.print("\t"+pilaPrincipal.peek());
+                                    System.out.print("->"+dir+"\n");
+                                    pilaPrincipal.pop();
+                                    pilaPrincipal.push(dir);
+                                    ban = true;
+                                }else{
+                                    //Si dir son un conjunto de no terminales entra aqui
+                                    System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                    System.out.print("\t"+pilaPrincipal.peek());
+                                    System.out.print("->"+dir+"\n");
+                                    pilaPrincipal.pop();
+                                    String[] temp = dir.split(" "); //Convierte la caden dir en arreglo
+                                    for (String f : temp) {
+                                        pilaAux.push(f);
+                                    }
+                                    while(!pilaAux.peek().equals("Z")){
+                                        pilaPrincipal.push(pilaAux.peek());
+                                        pilaAux.pop();
+                                    }
+                                    ban = true;
+                                }
+                            }
+                        } 
+                }
+            }
+    }
+    
+    private void InicializarPilas()
+    {
+        cadena.add("$"); //Añade el terminador de cadena
+        pilaAux.push("Z");
+        pilaPrincipal.push("$");
+        pilaPrincipal.push("E");
     }
 
     private void inicializar() {
@@ -102,6 +228,7 @@ public class principal extends javax.swing.JFrame {
         setTitle("ETHIDE");
         numerolinea2 = new NumeroLinea2(codigoFuente);
         jScrollPane2.setRowHeaderView(numerolinea2);
+        InicializarPilas();
     }
 
     private void Cerrar() {
@@ -441,7 +568,7 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         AnalisisLexico();
-        AnalisisSintactico();
+        AnalisisSintactico("$","","");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

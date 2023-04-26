@@ -884,12 +884,12 @@ class Lexer {
           // fall through
           case 54: break;
           case 6:
-            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),")",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"(",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;
             }
           // fall through
           case 55: break;
           case 7:
-            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"(",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;
+            { t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),")",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;
             }
           // fall through
           case 56: break;

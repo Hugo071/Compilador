@@ -139,8 +139,8 @@ entrada {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"e
 "!" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"!",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Negacion;}
 
 /* Simbolos de agrupación */
-"(" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),")",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;}
-")" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"(",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;}
+"(" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"(",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;}
+")" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),")",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;}
 "[" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"[",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreCorchete;}
 "]" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"]",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraCorchete;}
 "{" {t.numeroLinea=yyline; lexeme=yytext(); Token t1 = new Token(yytext(),"{",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreLLave;}
