@@ -156,6 +156,7 @@ public class principal extends javax.swing.JFrame {
                     nfil++;
                 }
             }
+            
             dir=transicion[nfil][ncol]; //dir guarda la accion de la tabla de transicion
                     //AccionPilaPrin(dir);
                         switch(dir){
@@ -228,7 +229,6 @@ public class principal extends javax.swing.JFrame {
         setTitle("ETHIDE");
         numerolinea2 = new NumeroLinea2(codigoFuente);
         jScrollPane2.setRowHeaderView(numerolinea2);
-        InicializarPilas();
     }
 
     private void Cerrar() {
@@ -258,6 +258,8 @@ public class principal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        sintactico = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -279,6 +281,7 @@ public class principal extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         codigoFuente.setColumns(20);
         codigoFuente.setRows(5);
@@ -289,9 +292,13 @@ public class principal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(codigoFuente);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 53, 515, 400));
+
         lexico.setColumns(20);
         lexico.setRows(5);
         jScrollPane3.setViewportView(lexico);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 506, 179));
 
         jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
@@ -361,6 +368,14 @@ public class principal extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jButton6);
+
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1116, 35));
+
+        sintactico.setColumns(20);
+        sintactico.setRows(5);
+        jScrollPane4.setViewportView(sintactico);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 506, 179));
 
         jMenu1.setText("Archivo");
 
@@ -468,29 +483,6 @@ public class principal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -567,6 +559,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        InicializarPilas();
         AnalisisLexico();
         AnalisisSintactico("$","","");
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -653,7 +646,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextArea lexico;
+    private javax.swing.JTextArea sintactico;
     // End of variables declaration//GEN-END:variables
 }
