@@ -77,12 +77,13 @@ public class principal extends javax.swing.JFrame {
             while (true) {
                 Tokens token = lexer.yylex();
                 if (token == null) {
+                    AnalisisSintactico("$", "", (infoToken.numeroLinea + 1)+"");
                     //Heho para pruebas
                     //componentes = "";
                     Iterator it = lexer.tablaSimbolos.entrySet().iterator();
                     while (it.hasNext()) {
                         Map.Entry<String, Token> entry = (Map.Entry) it.next();
-                        AnalisisSintactico(entry.getValue().getToken(), entry.getValue().getLexema(), (entry.getValue().getnLinea() + 1)+"");
+                        //AnalisisSintactico(entry.getValue().getToken(), entry.getValue().getLexema(), (entry.getValue().getnLinea() + 1)+"");
                         //componentes += entry.getValue().getToken()+",";
                         //System.out.println("Lexema: " + entry.getValue().getLexema() + " Token: " + entry.getValue().getToken() + " Numero de linea: " + (entry.getValue().getnLinea() + 1));
                     }
@@ -98,8 +99,10 @@ public class principal extends javax.swing.JFrame {
                     default:
                         if (token.getSimbolo() == null) {
                             resu += token + "\n";
+                            AnalisisSintactico(token+"", infoToken.lexema, (infoToken.numeroLinea + 1)+"");
                         } else {
                             resu += token.getSimbolo() + "\n";
+                            AnalisisSintactico(token.getSimbolo(), infoToken.lexema, (infoToken.numeroLinea + 1)+"");
                         }
                         break;
                 }
@@ -139,6 +142,9 @@ public class principal extends javax.swing.JFrame {
             }else if(componente.equals(pilaPrincipal.peek())){
                     //Compara si el componente que se saco de la cadena es igual al valor de la Pila
                     //System.out.println("concuerda"); //Accion de concuerda
+                    res += Arrays.toString(pilaPrincipal.toArray());
+                    res += "\t"+pilaPrincipal.peek();
+                    res += "->"+componente+"\n";
                     res += "concuerda\n";
                     sintactico.setText(res);
                     //res+=componente;
@@ -609,7 +615,7 @@ public class principal extends javax.swing.JFrame {
         InicializarPilas();
         res = "";
         AnalisisLexico();
-        AnalisisSintactico("$","","");
+        //AnalisisSintactico("$","","");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
