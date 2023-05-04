@@ -126,7 +126,14 @@ public class principal extends javax.swing.JFrame {
             letraPila=pilaPrincipal.peek(); //Se lamacena cual es el valor que esta en la pila principal
             if(terminales.contains(letraPila) && !componente.equals(letraPila)){
                 //Se verifica si el elemento de la pila es terminal y si es diferente al componente a analizar
-                //System.out.println("Error sintactico en la linea " + nlinea + " se esperaba el simbolo: "+letraPila);
+                res += Arrays.toString(pilaPrincipal.toArray());
+                sintactico.setText(res);
+                //System.out.print("\t"+pilaPrincipal.peek());
+                res += "\t"+pilaPrincipal.peek();
+                sintactico.setText(res);
+                //System.out.print("->"+dir+"\n");
+                res += "->"+componente+"\n";
+                sintactico.setText(res);
                 res += "Error sintactico en la linea " + nlinea + " se esperaba el simbolo: "+letraPila+"\n";
                 sintactico.setText(res);
                 pilaPrincipal.pop();
@@ -141,6 +148,14 @@ public class principal extends javax.swing.JFrame {
                     break;
             }else if(componente.equals(pilaPrincipal.peek())){
                     //Compara si el componente que se saco de la cadena es igual al valor de la Pila
+                    res += Arrays.toString(pilaPrincipal.toArray());
+                    sintactico.setText(res);
+                    //System.out.print("\t"+pilaPrincipal.peek());
+                    res += "\t"+pilaPrincipal.peek();
+                    sintactico.setText(res);
+                    //System.out.print("->"+dir+"\n");
+                    res += "->"+componente+"\n";
+                    sintactico.setText(res);
                     //System.out.println("concuerda"); //Accion de concuerda
                     res += Arrays.toString(pilaPrincipal.toArray());
                     res += "\t"+pilaPrincipal.peek();
@@ -221,22 +236,6 @@ public class principal extends javax.swing.JFrame {
                                 break;
                             }
                             default -> {
-                                if(terminales.contains(dir)){
-                                    //Si la accion que se saco es una terminal entra aqui
-                                    //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                    res += Arrays.toString(pilaPrincipal.toArray());
-                                    sintactico.setText(res);
-                                    //System.out.print("\t"+pilaPrincipal.peek());
-                                    res += "\t"+pilaPrincipal.peek();
-                                    sintactico.setText(res);
-                                    //System.out.print("->"+dir+"\n");
-                                    res += "->"+dir+"\n";
-                                    sintactico.setText(res);
-                                    pilaPrincipal.pop();
-                                    pilaPrincipal.push(dir);
-                                    ban = true;
-                                }else{
-                                    //Si dir son un conjunto de no terminales entra aqui
                                     //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
                                     res += Arrays.toString(pilaPrincipal.toArray());
                                     sintactico.setText(res);
@@ -256,7 +255,6 @@ public class principal extends javax.swing.JFrame {
                                         pilaAux.pop();
                                     }
                                     ban = true;
-                                }
                             }
                         } 
                 }
