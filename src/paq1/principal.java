@@ -49,6 +49,7 @@ public class principal extends javax.swing.JFrame {
             {"Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Vacia","Vacia","* F T'","/ F T'","% F T'","Vacia"},
             {"( E )","Saltar","id","num","litcar","litcad","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"}
     };
+    String res;
     
 
     public principal() {
@@ -122,18 +123,24 @@ public class principal extends javax.swing.JFrame {
             letraPila=pilaPrincipal.peek(); //Se lamacena cual es el valor que esta en la pila principal
             if(terminales.contains(letraPila) && !componente.equals(letraPila)){
                 //Se verifica si el elemento de la pila es terminal y si es diferente al componente a analizar
-                System.out.println("Error sintactico en la linea " + nlinea + " se esperaba el simbolo: "+letraPila);
+                //System.out.println("Error sintactico en la linea " + nlinea + " se esperaba el simbolo: "+letraPila);
+                res += "Error sintactico en la linea " + nlinea + " se esperaba el simbolo: "+letraPila+"\n";
+                sintactico.setText(res);
                 pilaPrincipal.pop();
                 ban=true;
             }else{
                 if(componente.equals("$") && pilaPrincipal.peek().equals("$")){
                     //Esto ve si ya se llego al final de la cadena y pila
-                    System.out.println("Analisis sintactico finalizado correctamente");
+                    //System.out.println("Analisis sintactico finalizado correctamente");
+                    res += "Analisis sintactico finalizado correctamente";
+                    sintactico.setText(res);
                     //System.out.println("Cadena final resultante: "+res);
                     break;
             }else if(componente.equals(pilaPrincipal.peek())){
                     //Compara si el componente que se saco de la cadena es igual al valor de la Pila
-                    System.out.println("concuerda"); //Accion de concuerda
+                    //System.out.println("concuerda"); //Accion de concuerda
+                    res += "concuerda\n";
+                    sintactico.setText(res);
                     //res+=componente;
                     pilaPrincipal.pop();
                     ban = false;
@@ -161,44 +168,78 @@ public class principal extends javax.swing.JFrame {
                     //AccionPilaPrin(dir);
                         switch(dir){
                             case "Vacia" -> {
-                                System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                System.out.print("\t"+pilaPrincipal.peek());
-                                System.out.print("->"+dir+"\n");
+                                //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                res += Arrays.toString(pilaPrincipal.toArray());
+                                sintactico.setText(res);
+                                //System.out.print("\t"+pilaPrincipal.peek());
+                                res += "\t"+pilaPrincipal.peek();
+                                sintactico.setText(res);
+                                //System.out.print("->"+dir+"\n");
+                                res += "->"+dir+"\n";
+                                sintactico.setText(res);
                                 pilaPrincipal.pop();
                                 ban = true;
                                 break;
                             }
                             case "Saltar" -> {
-                                System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                System.out.print("\t"+pilaPrincipal.peek());
-                                System.out.print("->"+dir+"\n");
-                                System.out.println("Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " saltar");
+                                //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                res += Arrays.toString(pilaPrincipal.toArray());
+                                sintactico.setText(res);
+                                //System.out.print("\t"+pilaPrincipal.peek());
+                                res += "\t"+pilaPrincipal.peek();
+                                sintactico.setText(res);
+                                //System.out.print("->"+dir+"\n");
+                                res += "->"+dir+"\n";
+                                sintactico.setText(res);
+                                //System.out.println("Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " saltar");
+                                res += "Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " saltar"+"\n";
+                                sintactico.setText(res);
                                 ban = false;
                                 break;
                             }
                             case "Sacar" -> {
-                                System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                System.out.print("\t"+pilaPrincipal.peek());
-                                System.out.print("->"+dir+"\n");
+                                //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                res += Arrays.toString(pilaPrincipal.toArray());
+                                sintactico.setText(res);
+                                //System.out.print("\t"+pilaPrincipal.peek());
+                                res += "\t"+pilaPrincipal.peek();
+                                sintactico.setText(res);
+                                //System.out.print("->"+dir+"\n");
+                                res += "->"+dir+"\n";
+                                sintactico.setText(res);
                                 pilaPrincipal.pop();
-                                System.out.println("Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " sacar");
+                                //System.out.println("Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " sacar");
+                                res += "Error sintactico en la linea "+nlinea+" no se esperaba "+lexema+ " sacar"+"\n";
+                                sintactico.setText(res);
                                 ban = true;
                                 break;
                             }
                             default -> {
                                 if(terminales.contains(dir)){
                                     //Si la accion que se saco es una terminal entra aqui
-                                    System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                    System.out.print("\t"+pilaPrincipal.peek());
-                                    System.out.print("->"+dir+"\n");
+                                    //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                    res += Arrays.toString(pilaPrincipal.toArray());
+                                    sintactico.setText(res);
+                                    //System.out.print("\t"+pilaPrincipal.peek());
+                                    res += "\t"+pilaPrincipal.peek();
+                                    sintactico.setText(res);
+                                    //System.out.print("->"+dir+"\n");
+                                    res += "->"+dir+"\n";
+                                    sintactico.setText(res);
                                     pilaPrincipal.pop();
                                     pilaPrincipal.push(dir);
                                     ban = true;
                                 }else{
                                     //Si dir son un conjunto de no terminales entra aqui
-                                    System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                    System.out.print("\t"+pilaPrincipal.peek());
-                                    System.out.print("->"+dir+"\n");
+                                    //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
+                                    res += Arrays.toString(pilaPrincipal.toArray());
+                                    sintactico.setText(res);
+                                    //System.out.print("\t"+pilaPrincipal.peek());
+                                    res += "\t"+pilaPrincipal.peek();
+                                    sintactico.setText(res);
+                                    //System.out.print("->"+dir+"\n");
+                                    res += "->"+dir+"\n";
+                                    sintactico.setText(res);
                                     pilaPrincipal.pop();
                                     String[] temp = dir.split(" "); //Convierte la caden dir en arreglo
                                     for (String f : temp) {
@@ -218,6 +259,7 @@ public class principal extends javax.swing.JFrame {
     
     private void InicializarPilas()
     {
+        pilaPrincipal.clear();
         cadena.add("$"); //Añade el terminador de cadena
         pilaAux.push("Z");
         pilaPrincipal.push("$");
@@ -539,6 +581,11 @@ public class principal extends javax.swing.JFrame {
             if (!getTitle().contains("*")) {
                 setTitle(getTitle() + "*");
             }
+        // Analisis dinamico
+        /*InicializarPilas();
+        res = "";
+        AnalisisLexico();
+        AnalisisSintactico("$","","");*/
         }
     }//GEN-LAST:event_codigoFuenteKeyReleased
 
@@ -560,6 +607,7 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         InicializarPilas();
+        res = "";
         AnalisisLexico();
         AnalisisSintactico("$","","");
     }//GEN-LAST:event_jButton6ActionPerformed
