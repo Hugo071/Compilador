@@ -1,1 +1,14 @@
-(4+2
+programa ejemplo;
+[
+	entero x,y,z;
+	cadena k;
+]
+funcion entero f.a(entero a, entero b)
+{
+	x:=5;
+	y:=4;
+	z:=x+y;
+}
+{
+	mostrar(f.a(entero x, entero y));
+}

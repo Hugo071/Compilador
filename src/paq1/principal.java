@@ -37,17 +37,38 @@ public class principal extends javax.swing.JFrame {
     Lexer lexer;
     public Stack<String> pilaAux = new Stack(); //Pila auxiliar
     public Stack<String> pilaPrincipal = new Stack(); //Pila principal
-    ArrayList<String> cadena = new ArrayList<>(Arrays.asList("num","+","id","%",")","num","%","id","-","id","num")); //Arreglo que almacena los componentes del lexico
-    ArrayList<String> noTerminales = new ArrayList<>(Arrays.asList("E","E'","T","T'","F")); //Variable no terminales de las filas 
-    ArrayList<String> terminales = new ArrayList<>(Arrays.asList("(",")","id","num","litcar","litcad","+","-",
-    "*","/","%","$")); //Variable no terminales de las columnas 
+    //ArrayList<String> cadena = new ArrayList<>(Arrays.asList("num","+","id","%",")","num","%","id","-","id","num")); //Arreglo que almacena los componentes del lexico
+    ArrayList<String> noTerminales = new ArrayList<>(Arrays.asList("P", "zona_dec", "modulo", "sigdec1", "list_arg", "sigpara", "list_para", "bloque", "sent", "sigsi", "sent_op", "sent_comp", "sent_simple", "asig", "sigdec", "Dec", "tipo", "L", "L'", "R", "R'", "E", "E'", "T", "T'", "F")); //Variable no terminales de las filas 
+    ArrayList<String> terminales = new ArrayList<>(Arrays.asList("programa",";","[","]","funcion","idf","(",")",
+    "procedimiento","idp",",","id", "{", "}", "sino", "inc", "num", "dec", "si", "mientras", "hacer", "para", "mostrar", ":=", "entero", "flotante", "caracter", "cadena", "booleano", "&&", "||", "!", "<", ">", "¡=", "mI", "MI", "==", "+", "-", "*", "/", "%", "litcar", "litcad", "verdadero", "falso", "leer", "$")); //Variable no terminales de las columnas 
     public String componente; //Va guardando de uno por uno los componentes del arreglo durante el for
     public String[][] transicion = {
-            {"T E'","Saltar","T E'","T E'","T E'","T E'","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
-            {"Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","+ T E'","- T E'","Vacia","Vacia","Vacia","Vacia"},
-            {"F T'","Saltar","F T'","F T'","F T'","F T'","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
-            {"Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Vacia","Vacia","* F T'","/ F T'","% F T'","Vacia"},
-            {"( E )","Saltar","id","num","litcar","litcad","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"}
+            {"programa id ; zona_dec modulo bloque","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","[ Dec ]","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","funcion tipo idf ( list_arg ) bloque modulo","Saltar","Saltar","Saltar","procedimiento idp ( list_arg ) bloque modulo","Saltar","Saltar","Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Vacia","Saltar","Saltar",", list_arg","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","tipo id sigdec1","tipo id sigdec1","tipo id sigdec1","tipo id sigdec1","tipo id sigdec1","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Vacia","Saltar","Saltar",", L sigpara","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","L sigpara","L sigpara","Vacia","Saltar","Saltar","Saltar","L sigpara","Saltar","Saltar","Saltar","Saltar","L sigpara","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","L sigpara","L sigpara","L sigpara","L sigpara","L sigpara","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","{ sent }","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","sent_simple sent","Saltar","sent_simple sent","Saltar","Vacia","Saltar","sent_simple sent","Saltar","sent_simple sent","sent_comp sent","sent_comp sent","sent_comp sent","sent_comp sent","sent_simple sent","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Vacia","Saltar","Vacia","Saltar","Vacia","sino bloque","Vacia","Saltar","Vacia","Vacia","Vacia","Vacia","Vacia","Vacia","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","inc ( id , num )","Saltar","dec ( id , num )","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","si ( L ) bloque sigsi","mientras ( L ) bloque","hacer bloque mientras ( L ) ;","para ( Asig ; L ; Sent_Op ) bloque","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","idp ( list_arg )","Saltar","asig","Saltar","Saltar","Saltar","sent_op","Saltar","sent_op","Saltar","Saltar","Saltar","Saltar","mostrar ( list_para ) ;","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","id := L ;","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar",", id sigdec","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","tipo id sigdec ; Dec","tipo id sigdec ; Dec","tipo id sigdec ; Dec","tipo id sigdec ; Dec","tipo id sigdec ; Dec","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","entero","flotante","caracter","cadena","booleano","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"Saltar","Saltar","Saltar","Saltar","Saltar","R L'","R L'","Saltar","Saltar","Saltar","Saltar","R L'","Saltar","Saltar","Saltar","Saltar","R L'","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","! L","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","R L'","R L'","R L'","R L'","Saltar","Sacar"},
+            {"Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "&& R L'", "|| R L'", "Saltar", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Sacar"},
+            {"Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "E R'", "E R'", "Saltar", "Saltar", "Saltar", "Saltar", "E R'", "Saltar", "Saltar", "Saltar", "Saltar", "E R'", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "E R'", "E R'", "E R'", "E R'", "E R'", "E R'", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "E R'", "E R'", "E R'", "E R'", "Saltar", "Sacar"},
+            {"Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Vacia", "Vacia", "< E", "> E", "¡= E", "mI E", "MI E", "== E", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Sacar"},
+            {"Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "T E'", "T E'", "Saltar", "Saltar", "Saltar", "Saltar", "T E'", "Saltar", "Saltar", "Saltar", "Saltar", "T E'", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "T E'", "T E'", "T E'", "T E'", "Saltar", "Sacar"},
+            {"Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "+ T E'", "- T E'", "Vacia", "Vacia", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Sacar"},
+            {"Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "F T'", "F T'", "Saltar", "Saltar", "Saltar", "Saltar", "F T'", "Saltar", "Saltar", "Saltar", "Saltar", "F T'", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "F T'", "F T'", "F T'", "F T'", "Saltar", "Sacar"},
+            {"Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "Vacia", "* F T'", "/ F T'", "% F T'", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Sacar"},
+            {"Saltar", "Saltar", "Saltar","Saltar","Saltar","idf ( list_arg )", "( L )", "Saltar", "Saltar", "Saltar", "Saltar","id", "Saltar", "Saltar", "Saltar", "Saltar", "num", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "Saltar", "litcar", "litcad", "verdadero", "falso", "leer ( list_arg ) ;", "Sacar"}
     };
     String res;
     
@@ -126,7 +147,7 @@ public class principal extends javax.swing.JFrame {
             letraPila=pilaPrincipal.peek(); //Se lamacena cual es el valor que esta en la pila principal
             if(terminales.contains(letraPila) && !componente.equals(letraPila)){
                 //Se verifica si el elemento de la pila es terminal y si es diferente al componente a analizar
-                res += Arrays.toString(pilaPrincipal.toArray());
+                res += Arrays.toString(pilaPrincipal.toArray())+"\n";
                 sintactico.setText(res);
                 //System.out.print("\t"+pilaPrincipal.peek());
                 res += "\t"+pilaPrincipal.peek();
@@ -148,7 +169,7 @@ public class principal extends javax.swing.JFrame {
                     break;
             }else if(componente.equals(pilaPrincipal.peek())){
                     //Compara si el componente que se saco de la cadena es igual al valor de la Pila
-                    res += Arrays.toString(pilaPrincipal.toArray());
+                    res += Arrays.toString(pilaPrincipal.toArray())+"\n";
                     sintactico.setText(res);
                     //System.out.print("\t"+pilaPrincipal.peek());
                     res += "\t"+pilaPrincipal.peek();
@@ -157,9 +178,9 @@ public class principal extends javax.swing.JFrame {
                     res += "->"+componente+"\n";
                     sintactico.setText(res);
                     //System.out.println("concuerda"); //Accion de concuerda
-                    res += Arrays.toString(pilaPrincipal.toArray());
-                    res += "\t"+pilaPrincipal.peek();
-                    res += "->"+componente+"\n";
+                    res += Arrays.toString(pilaPrincipal.toArray())+"\n";
+                    //res += "\t"+pilaPrincipal.peek();
+                    //res += "->"+componente+"\n";
                     res += "concuerda\n";
                     sintactico.setText(res);
                     //res+=componente;
@@ -190,7 +211,7 @@ public class principal extends javax.swing.JFrame {
                         switch(dir){
                             case "Vacia" -> {
                                 //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                res += Arrays.toString(pilaPrincipal.toArray());
+                                res += Arrays.toString(pilaPrincipal.toArray())+"\n";
                                 sintactico.setText(res);
                                 //System.out.print("\t"+pilaPrincipal.peek());
                                 res += "\t"+pilaPrincipal.peek();
@@ -204,7 +225,7 @@ public class principal extends javax.swing.JFrame {
                             }
                             case "Saltar" -> {
                                 //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                res += Arrays.toString(pilaPrincipal.toArray());
+                                res += Arrays.toString(pilaPrincipal.toArray())+"\n";
                                 sintactico.setText(res);
                                 //System.out.print("\t"+pilaPrincipal.peek());
                                 res += "\t"+pilaPrincipal.peek();
@@ -220,7 +241,7 @@ public class principal extends javax.swing.JFrame {
                             }
                             case "Sacar" -> {
                                 //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                res += Arrays.toString(pilaPrincipal.toArray());
+                                res += Arrays.toString(pilaPrincipal.toArray())+"\n";
                                 sintactico.setText(res);
                                 //System.out.print("\t"+pilaPrincipal.peek());
                                 res += "\t"+pilaPrincipal.peek();
@@ -237,7 +258,7 @@ public class principal extends javax.swing.JFrame {
                             }
                             default -> {
                                     //System.out.print(Arrays.toString(pilaPrincipal.toArray()));
-                                    res += Arrays.toString(pilaPrincipal.toArray());
+                                    res += Arrays.toString(pilaPrincipal.toArray())+"\n";
                                     sintactico.setText(res);
                                     //System.out.print("\t"+pilaPrincipal.peek());
                                     res += "\t"+pilaPrincipal.peek();
@@ -264,10 +285,10 @@ public class principal extends javax.swing.JFrame {
     private void InicializarPilas()
     {
         pilaPrincipal.clear();
-        cadena.add("$"); //Añade el terminador de cadena
+//        cadena.add("$"); //Añade el terminador de cadena
         pilaAux.push("Z");
         pilaPrincipal.push("$");
-        pilaPrincipal.push("E");
+        pilaPrincipal.push("P");
     }
 
     private void inicializar() {
@@ -585,11 +606,13 @@ public class principal extends javax.swing.JFrame {
             if (!getTitle().contains("*")) {
                 setTitle(getTitle() + "*");
             }
+            /*
         // Analisis dinamico
-        /*InicializarPilas();
+        InicializarPilas();
         res = "";
         AnalisisLexico();
-        AnalisisSintactico("$","","");*/
+        //AnalisisSintactico("$","","");
+            */
         }
     }//GEN-LAST:event_codigoFuenteKeyReleased
 
