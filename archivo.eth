@@ -5,9 +5,9 @@ programa ejemplo;
 ]
 funcion entero f.a(entero a, entero b)
 {
-	x:=5;
-	y:=4;
-	z:=x+y;
+	para(x:=10;x<10;dec(x,10))
+{
+}
 }
 {
 	mostrar(f.a(entero x, entero y));
