@@ -314,6 +314,33 @@ public class principal extends javax.swing.JFrame {
             }
     }
     
+    private boolean areQuotesBalanced(String input) {
+    Stack<Character> stack = new Stack<>();
+
+    for (char character : input.toCharArray()) {
+        if (character == '"') {
+            if (!stack.isEmpty() && stack.peek() == '"') {
+                stack.pop();
+            } else {
+                stack.push('"');
+            }
+        }
+    }
+    return stack.isEmpty();
+}
+    
+    public void analyzeInput(String input) {
+    if (!areQuotesBalanced(input)) {
+        System.out.println("Error: Las comillas no están equilibradas.");
+        // Tratar el resto de la cadena como parte de la cadena no cerrada
+        int index = input.indexOf('"');
+        String remainingString = input.substring(index + 1);
+        System.out.println("Cadena no cerrada: " + remainingString);
+    } else {
+        // Continuar con el análisis léxico normal
+    }
+}
+    
     private void InicializarPilas()
     {
         pilaPrincipal.clear();
