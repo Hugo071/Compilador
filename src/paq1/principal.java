@@ -30,7 +30,7 @@ import java.awt.event.KeyEvent;
  * @author CSjes
  */
 public class principal extends javax.swing.JFrame {
-    int cont, contant = 0;
+    int cont, contant = 0, c = 0;
     boolean band;
     NumeroLinea2 numerolinea2;
     HerramientaArchivo archivo;
@@ -45,7 +45,7 @@ public class principal extends javax.swing.JFrame {
     "procedimiento","idp",",","id", "{", "}", "sino", "inc", "num", "dec", "si", "mientras", "hacer", "para", "mostrar", ":=", "entero", "flotante", "caracter", "cadena", "booleano", "&&", "||", "!", "<", ">", "¡=", "@", "#", "==", "+", "-", "*", "/", "%", "litcar", "litcad", "verdadero", "falso", "leer", "$")); //Variable no terminales de las columnas 
     public String componente; //Va guardando de uno por uno los componentes del arreglo durante el for
     public String[][] transicion = {
-            {"programa id ; zona_dec modulo bloque","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
+            {"programa id ; zona_dec modulo bloque","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
             {"Saltar","Saltar","[ Dec ]","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
             {"Saltar","Saltar","Saltar","Saltar","funcion tipo idf ( list_arg ) bloque modulo","Saltar","Saltar","Saltar","procedimiento idp ( list_arg ) bloque modulo","Saltar","Saltar","Saltar","Vacia","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
             {"Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Vacia","Saltar","Saltar",", list_arg","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Saltar","Sacar"},
@@ -672,8 +672,16 @@ public class principal extends javax.swing.JFrame {
         archivo.Guardar(this);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void Limpiar()
+    {
+        errores.setText("");
+        lexico.setText("");
+        sintactico.setText("");
+    }
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         InicializarPilas();
+        Limpiar();
         res = "";
         err = "";
         AnalisisLexico();
