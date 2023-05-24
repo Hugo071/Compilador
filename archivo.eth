@@ -8,7 +8,7 @@ funcion entero f.a(entero a, entero b)
 	x:=5;
 	y:=4;
 	z:=x+y;
-	x := ";
+	x:="ajshe";
 }
 {
 	mostrar(f.a(entero x, entero y));
