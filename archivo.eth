@@ -1,6 +1,6 @@
 programa ejemplo;
 [
-	entero x,y,z;
+	entero x,y,z; 
 	cadena k;
 ]
 funcion entero f.a(entero a, entero b)
@@ -8,7 +8,7 @@ funcion entero f.a(entero a, entero b)
 	x:=5;
 	y:=4;
 	z:=x+y;
-	x:="ajshe";
+	k:='h
 }
 {
 	mostrar(f.a(entero x, entero y));

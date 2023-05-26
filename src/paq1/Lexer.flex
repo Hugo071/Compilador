@@ -72,7 +72,9 @@ letra = [a-zA-ZñÑ_$á-źÁ-Ź]
 digito = [0-9]
 espacio = [ ]+
 caracter = \'(\\.|[^\'\\])?\'
-cadena = \"(\\.|[^\"\\])*\"|\"(\\.|[^\"\\])*
+carinc = \'(\\.|[^\'\\])?
+cadena = \"(\\.|[^\"\\])*\"
+cadinc = \"(\\.|[^\"\\])*
 flotante = (-?[1-9][0-9]*\.[0-9]*[1-9])|(0\.0)|(-?[1-9][0-9]*\.0)|(-?[1-9][0-9]*\.[0-9]*[1-9][eE][-+][1-9][0-9]*)|(-?0\.[0-9]*[1-9][eE][-+][1-9][0-9]*)
 entero = (0|-?[1-9][0-9]*)
 num = {entero} | {flotante}
@@ -155,3 +157,5 @@ leer {t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new T
 ";" {t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),";",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return PuntoComa;}
 
  . {t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); return ERROR;}
+{cadinc} {t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); return ERROR;}
+{carinc} {t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); return ERROR;}

@@ -144,19 +144,19 @@ class Lexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\2\2\1\3\1\4\1\5\1\6\2\1"+
-    "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\2\16"+
-    "\1\1\1\17\1\20\1\1\1\21\1\22\1\23\14\5"+
-    "\1\24\1\1\1\25\1\1\1\4\1\0\1\26\1\0"+
+    "\1\0\1\1\2\2\1\3\1\1\1\4\1\5\2\1"+
+    "\1\6\1\7\1\10\1\11\1\12\1\13\1\14\2\15"+
+    "\1\1\1\16\1\17\1\1\1\20\1\21\1\22\14\4"+
+    "\1\23\1\1\1\24\1\1\1\25\1\0\1\26\1\1"+
     "\1\27\3\0\1\2\2\0\1\30\1\31\1\32\1\33"+
-    "\4\5\1\0\10\5\1\0\2\5\1\34\1\5\1\35"+
-    "\1\36\3\0\1\16\1\0\2\16\3\5\1\37\1\5"+
-    "\1\40\4\5\1\41\3\5\1\42\4\5\1\0\1\2"+
-    "\2\0\11\5\1\43\2\5\1\44\2\5\1\45\1\5"+
-    "\1\0\5\5\1\46\2\5\1\47\5\5\1\16\1\5"+
-    "\1\50\1\5\1\51\14\5\1\52\1\5\1\53\3\5"+
-    "\1\54\1\55\1\56\1\57\1\60\1\5\1\61\2\5"+
-    "\1\62\3\5\1\63";
+    "\4\4\1\0\10\4\1\0\2\4\1\34\1\4\1\35"+
+    "\1\36\3\0\1\15\1\0\2\15\3\4\1\37\1\4"+
+    "\1\40\4\4\1\41\3\4\1\42\4\4\1\0\1\2"+
+    "\2\0\11\4\1\43\2\4\1\44\2\4\1\45\1\4"+
+    "\1\0\5\4\1\46\2\4\1\47\5\4\1\15\1\4"+
+    "\1\50\1\4\1\51\14\4\1\52\1\4\1\53\3\4"+
+    "\1\54\1\55\1\56\1\57\1\60\1\4\1\61\2\4"+
+    "\1\62\3\4\1\63";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[176];
@@ -420,7 +420,7 @@ class Lexer {
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\1\0\2\11\1\1\1\11\2\1\1\11\2\1\5\11"+
     "\5\1\1\11\3\1\2\11\14\1\1\11\1\1\1\11"+
-    "\1\1\1\11\1\0\1\11\1\0\1\11\3\0\1\1"+
+    "\1\1\1\11\1\0\1\11\1\1\1\11\3\0\1\1"+
     "\2\0\4\11\4\1\1\0\10\1\1\0\4\1\2\11"+
     "\3\0\1\1\1\0\25\1\1\0\1\1\2\0\21\1"+
     "\1\0\63\1";
@@ -935,92 +935,92 @@ class Lexer {
           // fall through
           case 54: break;
           case 4:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"litcad",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return litcad;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"id",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return id;
             }
           // fall through
           case 55: break;
           case 5:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"id",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return id;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"%",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Factorial;
             }
           // fall through
           case 56: break;
           case 6:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"%",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Factorial;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"(",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;
             }
           // fall through
           case 57: break;
           case 7:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"(",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreParentesis;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),")",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;
             }
           // fall through
           case 58: break;
           case 8:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),")",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraParentesis;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"*",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Producto;
             }
           // fall through
           case 59: break;
           case 9:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"*",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Producto;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"+",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Suma;
             }
           // fall through
           case 60: break;
           case 10:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"+",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Suma;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),",",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Coma;
             }
           // fall through
           case 61: break;
           case 11:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),",",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Coma;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"-",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Resta;
             }
           // fall through
           case 62: break;
           case 12:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"-",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Resta;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"/",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Division;
             }
           // fall through
           case 63: break;
           case 13:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"/",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Division;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"num",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return num;
             }
           // fall through
           case 64: break;
           case 14:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"num",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return num;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),";",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return PuntoComa;
             }
           // fall through
           case 65: break;
           case 15:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),";",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return PuntoComa;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"<",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Menor;
             }
           // fall through
           case 66: break;
           case 16:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"<",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Menor;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),">",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Mayor;
             }
           // fall through
           case 67: break;
           case 17:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),">",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return Mayor;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"[",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreCorchete;
             }
           // fall through
           case 68: break;
           case 18:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"[",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreCorchete;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"]",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraCorchete;
             }
           // fall through
           case 69: break;
           case 19:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"]",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierraCorchete;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"{",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreLLave;
             }
           // fall through
           case 70: break;
           case 20:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"{",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return AbreLLave;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"}",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierreLLave;
             }
           // fall through
           case 71: break;
           case 21:
-            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"}",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return CierreLLave;
+            { t.numeroLinea=yyline; t.lexema=yytext(); lexeme=yytext(); Token t1 = new Token(yytext(),"litcad",yyline); tablaSimbolos.put(yytext()+yyline+yycolumn,t1); return litcad;
             }
           // fall through
           case 72: break;
