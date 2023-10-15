@@ -29,6 +29,7 @@ public enum Tokens {
     verdadero,
     falso,
     mostrar,
+    principal,
     leer,
     Igual(":="),
     Suma("+"),
